@@ -45,8 +45,8 @@
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right lato-light" style="color:#ffffff">
-                    <li class="active "><a href="index.php" style="color:#ffffff">Home</a></li>
-                    <li><a href="login.html" style="color:#ffffff">Sign in</a></li>
+                    <li class="active "><a href="home.php" style="color:#ffffff">Home</a></li>
+                    <li><a href="login.php" style="color:#ffffff">Sign in</a></li>
                 </ul>
             </div>
         </nav>
@@ -55,31 +55,18 @@
     <div class="container">
         <div style="margin-top: 60px;">
             <div class="row">
-                <div class="col-md-4" id="left" >
-                    <?php
-                    $sql = "SELECT `title` FROM `bucket_items` ORDER BY `item_id` DESC LIMIT 5";
-                    $result = $conn->query($sql);
-                        echo "<ul id='list' onclick='showUser(this.value)'>";
-                            if ($result->num_rows > 0){
-                                while ($row = $result->fetch_assoc()){
-                                    echo "<li>".$row["title"]."</li>";
-                                }
-                            }
-                        echo "</ul>";
-                    ?>
+                <div class="col-lg-3" id="left" >
+                    <form class="role" action="" method="get">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8"> <input type="text" class="form-control" name="list"></div>
+                                <div class="col-md-1"> <button type="submit" class="btn btn-default " name="save">search</button></div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-8" id="right" >
-                    <?php
-                    $sql = "SELECT `title`, `content` FROM `bucket_items` ORDER BY `item_id` DESC LIMIT 4 ";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0){
-                        while ($row = $result->fetch_assoc()){
-                            echo "<h1>".$row["title"]."</h1>";
-                            echo "<p>".$row["content"]."</p>";
-                        }
-                    }
+                <div class="col-lg-9" id="right" >
 
-                    ?>
                 </div>
             </div>
         </div>
